@@ -13,8 +13,6 @@ import java.util.Iterator;
 import java.util.List;
 
 public class CustomerController extends HttpServlet {
-    public CustomerController() {
-    }
 
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         this.doPost(req, resp);
@@ -22,14 +20,12 @@ public class CustomerController extends HttpServlet {
 
     public void doPost(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws IOException {
         httpServletResponse.setContentType("text/html; charset=UTF-8");
+
         PrintWriter writer = httpServletResponse.getWriter();
-        List customers = SelectQuery.selectTable();
 
-        try {
-            Iterator var5 = customers.iterator();
+        List<Customer> customers = SelectQuery.selectTable();
 
-            while(var5.hasNext()) {
-                Customer c = (Customer)var5.next();
+        for(Customer c : customers) {
                 writer.print(c.getId() + " | ");
                 writer.print(c.getSurname() + " | ");
                 writer.print(c.getName() + " | ");
@@ -38,9 +34,7 @@ public class CustomerController extends HttpServlet {
                 writer.print(c.getPhone() + " |");
                 writer.print("</br>");
             }
-        } finally {
-            writer.close();
         }
 
     }
-}
+

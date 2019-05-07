@@ -72,7 +72,8 @@ public class Customer {
         }
     }
 
+    @Override
     public int hashCode() {
-        return Objects.hash(new Object[]{this.surname, this.name, this.age, this.sex, this.phone});
+        return Objects.hash(id, surname, name, age, sex, phone);
     }
 }

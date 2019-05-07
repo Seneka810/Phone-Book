@@ -27,7 +27,6 @@ public class InsertQuery {
             var8.printStackTrace();
         }
 
-        List<Customer> customers = SelectQuery.selectTable();
-        return customers;
+        return SelectQuery.selectTable();
     }
 }

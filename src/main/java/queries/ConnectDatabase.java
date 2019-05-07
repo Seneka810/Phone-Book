@@ -13,16 +13,16 @@ public class ConnectDatabase {
 
         try {
             Class.forName("org.hsqldb.jdbcDriver");
-        } catch (ClassNotFoundException var3) {
+        } catch (ClassNotFoundException e) {
             System.err.println("НЕ удалось загрузить драйвер ДБ.");
-            var3.printStackTrace(System.out);
+            e.printStackTrace(System.out);
         }
 
         try {
             connection = DriverManager.getConnection("jdbc:hsqldb:file:c:\\Java\\phoneBook\\db\\contactsDB", "SA", "");
-        } catch (SQLException var2) {
+        } catch (SQLException ex) {
             System.err.println("НЕ удалось создать соединение.");
-            var2.printStackTrace(System.out);
+            ex.printStackTrace(System.out);
         }
 
         return connection;

@@ -17,7 +17,7 @@ public class SelectQuery {
         Connection connection = null;
         Statement statement = null;
         ResultSet resultSet = null;
-        ArrayList customers = new ArrayList();
+        List<Customer> customers = new ArrayList();
 
         try {
             connection = ConnectDatabase.getConnection();
@@ -39,8 +39,9 @@ public class SelectQuery {
             resultSet.close();
             statement.close();
             connection.close();
-        } catch (SQLException var6) {
-            var6.printStackTrace(System.out);
+
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
         }
 
         return customers;

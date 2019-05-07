@@ -13,8 +13,6 @@ import java.util.Iterator;
 import java.util.List;
 
 public class CustomerInsertController extends HttpServlet {
-    public CustomerInsertController() {
-    }
 
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         this.doPost(req, resp);
@@ -23,7 +21,9 @@ public class CustomerInsertController extends HttpServlet {
     protected void doPost(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws ServletException, IOException {
         httpServletResponse.setContentType("text/html; charset=UTF-8");
         httpServletRequest.setCharacterEncoding("UTF-8");
+
         PrintWriter writer = httpServletResponse.getWriter();
+
         String surname = httpServletRequest.getParameter("surname");
         String name = httpServletRequest.getParameter("name");
         int age;
@@ -33,13 +33,9 @@ public class CustomerInsertController extends HttpServlet {
 
         String sex = httpServletRequest.getParameter("sex");
         String phone = httpServletRequest.getParameter("phone");
-        List customers = InsertQuery.insertTable(surname, name, age, sex, phone);
+        List<Customer> customers = InsertQuery.insertTable(surname, name, age, sex, phone);
 
-        try {
-            Iterator var10 = customers.iterator();
-
-            while(var10.hasNext()) {
-                Customer c = (Customer)var10.next();
+        for(Customer c : customers) {
                 writer.print(c.getId() + " | ");
                 writer.print(c.getSurname() + " | ");
                 writer.print(c.getName() + " | ");
@@ -48,9 +44,6 @@ public class CustomerInsertController extends HttpServlet {
                 writer.print(c.getPhone() + " |");
                 writer.print("</br>");
             }
-        } finally {
-            writer.close();
         }
-
     }
-}
+

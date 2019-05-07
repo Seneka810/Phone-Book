@@ -7,13 +7,13 @@
 <body>
 <form action="addtable/" method="POST" accept-charset="UTF-8">
     <label for="surname">Фамилия:</label>
-    <input type="text" name="surname" pattern="^[A-Za-zА-Яа-яЁё]{2,}+$" id="surname" />
+    <input type="text" minlength="2" name="surname" pattern="^[A-Za-zА-Яа-яЁё]+$" id="surname" />
     <br><br>
     <label for="name">Имя:</label>
-    <input type="text" name="name" pattern="^[A-Za-zА-Яа-яЁё]{2,}+$" id="name" />
+    <input type="text" minlength="2" name="name" pattern="^[A-Za-zА-Яа-яЁё]+$" id="name" />
     <br><br>
     <label for="age">Возраст:</label>
-    <input type="number" name="age" pattern="[0-9]{,3}" id="age" />
+    <input type="number" minlength="1" name="age" id="age" />
     <br><br>
     <label for="sex">Пол:</label>
     <select name="sex" id="sex">

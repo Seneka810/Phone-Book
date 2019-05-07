@@ -9,13 +9,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Iterator;
 import java.util.List;
 
 public class CustomerInsertController extends HttpServlet {
 
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        this.doPost(req, resp);
+       doPost(req, resp);
     }
 
     protected void doPost(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws ServletException, IOException {
@@ -26,10 +25,13 @@ public class CustomerInsertController extends HttpServlet {
 
         String surname = httpServletRequest.getParameter("surname");
         String name = httpServletRequest.getParameter("name");
-        int age;
-        if ((age = Integer.parseInt(httpServletRequest.getParameter("age"))) == 0) {
-            writer.print("Введите возраст");
+        int age = 0;
+        try {
+            age = Integer.parseInt(httpServletRequest.getParameter("age"));
+        }catch (NumberFormatException e) {
+            System.err.print("Введите возраст");
         }
+
 
         String sex = httpServletRequest.getParameter("sex");
         String phone = httpServletRequest.getParameter("phone");
@@ -45,5 +47,5 @@ public class CustomerInsertController extends HttpServlet {
                 writer.print("</br>");
             }
         }
-    }
+}
 

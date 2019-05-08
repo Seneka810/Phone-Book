@@ -32,7 +32,6 @@ public class CustomerInsertController extends HttpServlet {
             System.err.print("Введите возраст");
         }
 
-
         String sex = httpServletRequest.getParameter("sex");
         String phone = httpServletRequest.getParameter("phone");
         List<Customer> customers = InsertQuery.insertTable(surname, name, age, sex, phone);

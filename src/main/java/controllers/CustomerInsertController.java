@@ -31,10 +31,10 @@ public class CustomerInsertController extends HttpServlet {
         }catch (NumberFormatException e) {
             System.err.print("Введите возраст");
         }
-
         String sex = httpServletRequest.getParameter("sex");
         String phone = httpServletRequest.getParameter("phone");
-        List<Customer> customers = InsertQuery.insertTable(surname, name, age, sex, phone);
+
+        List<Customer> customers = InsertQuery.insertUsers(surname, name, age, sex, phone);
 
         for(Customer c : customers) {
                 writer.print(c.getId() + " | ");
@@ -46,5 +46,6 @@ public class CustomerInsertController extends HttpServlet {
                 writer.print("</br>");
             }
         }
+
 }
 

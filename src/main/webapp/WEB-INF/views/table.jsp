@@ -1,4 +1,5 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%--
   Created by IntelliJ IDEA.
   User: IUAD1DEN
@@ -25,11 +26,24 @@
        <c:forEach items="${customers}" var="customer">
            <tr>
                <td>${customer.getId()}</td>
-               <td contenteditable="true">${customer.getSurname()}</td>
-               <td contenteditable="true">${customer.getName()}</td>
-               <td contenteditable="true">${customer.getAge()}</td>
-               <td contenteditable="true">${customer.getSex()}</td>
-               <td contenteditable="true">${customer.getPhone()}</td>
+               <td contenteditable="false">${customer.getSurname()}</td>
+               <td contenteditable="false">${customer.getName()}</td>
+               <td contenteditable="false">${customer.getAge()}</td>
+               <td contenteditable="false">${customer.getSex()}</td>
+               <td contenteditable="false">${customer.getPhone()}</td>
+
+               <td>
+                   <form action="updateCustomers.jsp" method="post">
+                       <input type="number" name="id" value="${customer.getId()}" />
+                       <input type="text" name="surname" value="${customer.getSurname()}">
+                       <input type="text" name="name" value="${customer.getName()}">
+                       <input type="number" name="age" value="${customer.getAge()}">
+                       <input type="text" name="sex" value="${customer.getSex()}">
+                       <input type="tel" name="phone" value="${customer.getPhone()}">
+                       <input type="submit" value="Изменить">
+                   </form>
+               </td>
+
            </tr>
        </c:forEach>
    </table>

@@ -28,5 +28,4 @@
             <url-pattern>/addtable/*</url-pattern>
         </servlet-mapping>
 
-
 </web-app>

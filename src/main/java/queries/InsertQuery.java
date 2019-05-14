@@ -8,10 +8,8 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class InsertQuery {
-    public InsertQuery() {
-    }
 
-    public static List<Customer> insertTable(String surname, String name, int age, String sex, String phone) {
+    public static List<Customer> insertUsers(String surname, String name, int age, String sex, String phone) {
         try {
             Connection connection = ConnectDatabase.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO users(surname, name, age, sex, phone) VALUES (?, ?, ?, ?, ?)");
@@ -23,10 +21,10 @@ public class InsertQuery {
             preparedStatement.executeUpdate();
             preparedStatement.close();
             connection.close();
-        } catch (SQLException var8) {
-            var8.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
 
-        return SelectQuery.selectTable();
+        return SelectQuery.selectUsers();
     }
 }

@@ -2,18 +2,13 @@ package queries;
 
 import entities.Customer;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class SelectQuery {
-    public SelectQuery() {
-    }
 
-    public static List<Customer> selectTable() {
+    public static List<Customer> selectUsers() {
         Connection connection = null;
         Statement statement = null;
         ResultSet resultSet = null;
@@ -45,5 +40,39 @@ public class SelectQuery {
         }
 
         return customers;
+    }
+
+    public static Customer selectUserById(int id){
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        Customer customer = null;
+
+        try {
+            connection = ConnectDatabase.getConnection();
+            preparedStatement = connection.prepareStatement("SELECT surname, name, age, sex, phone FROM users WHERE id = ?");
+            preparedStatement.setInt(1, id);
+            resultSet = preparedStatement.executeQuery();
+            //customer.setId(id);
+            while(resultSet.next()) {
+                customer = new Customer();
+//                customer.setId(resultSet.getInt("id"));
+                customer.setSurname(resultSet.getString("surname"));
+                customer.setName(resultSet.getString("name"));
+                customer.setAge(resultSet.getInt("age"));
+                customer.setSex(resultSet.getString("sex"));
+                customer.setPhone(resultSet.getString("phone"));
+            }
+
+            connection.commit();
+            resultSet.close();
+            preparedStatement.close();
+            connection.close();
+
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        }
+
+        return customer;
     }
 }

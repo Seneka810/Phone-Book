@@ -34,12 +34,12 @@
 
                <td>
                    <form action="updateCustomers.jsp" method="post">
-                       <input type="number" name="id" value="${customer.getId()}" />
-                       <input type="text" name="surname" value="${customer.getSurname()}">
-                       <input type="text" name="name" value="${customer.getName()}">
-                       <input type="number" name="age" value="${customer.getAge()}">
-                       <input type="text" name="sex" value="${customer.getSex()}">
-                       <input type="tel" name="phone" value="${customer.getPhone()}">
+                       <input type="hidden" name="id" value="${customer.getId()}" />
+                       <input type="hidden" name="surname" value="${customer.getSurname()}">
+                       <input type="hidden" name="name" value="${customer.getName()}">
+                       <input type="hidden" name="age" value="${customer.getAge()}">
+                       <input type="hidden" name="sex" value="${customer.getSex()}">
+                       <input type="hidden" name="phone" value="${customer.getPhone()}">
                        <input type="submit" value="Изменить">
                    </form>
                </td>

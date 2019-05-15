@@ -15,7 +15,7 @@
 
         <servlet-mapping>
             <servlet-name>CustomerController</servlet-name>
-            <url-pattern>/table/*</url-pattern>
+            <url-pattern>/table/</url-pattern>
         </servlet-mapping>
 
         <servlet>
@@ -27,5 +27,15 @@
             <servlet-name>CustomerInsertController</servlet-name>
             <url-pattern>/addtable/*</url-pattern>
         </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CustomerUpdateController</servlet-name>
+        <servlet-class>controllers.CustomerInsertController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>CustomerUpdateController</servlet-name>
+        <url-pattern>/updateCustomers.jsp</url-pattern>
+    </servlet-mapping>
 
 </web-app>

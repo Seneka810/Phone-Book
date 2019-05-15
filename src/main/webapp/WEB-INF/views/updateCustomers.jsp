@@ -20,6 +20,7 @@
     <input type="text" name="age" value="${param.age}" placeholder=${param.age}>
     <input type="text" name="sex" value="${param.sex}" placeholder=${param.sex}>
     <input type="text" name="phone" value="${param.phone}" placeholder=${param.phone}>
+    <input type="hidden" name="_method" value="post">
     <input type="submit" value="Обновить">
 </form>
 </body>

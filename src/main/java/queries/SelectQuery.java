@@ -46,7 +46,7 @@ public class SelectQuery {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
-        Customer customer = null;
+        Customer customer = new Customer();
 
         try {
             connection = ConnectDatabase.getConnection();
@@ -55,7 +55,6 @@ public class SelectQuery {
             resultSet = preparedStatement.executeQuery();
             //customer.setId(id);
             while(resultSet.next()) {
-                customer = new Customer();
 //                customer.setId(resultSet.getInt("id"));
                 customer.setSurname(resultSet.getString("surname"));
                 customer.setName(resultSet.getString("name"));

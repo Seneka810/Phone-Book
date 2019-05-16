@@ -30,7 +30,6 @@ public class SelectQuery {
                 customers.add(customer);
             }
 
-            connection.commit();
             resultSet.close();
             statement.close();
             connection.close();
@@ -53,9 +52,8 @@ public class SelectQuery {
             preparedStatement = connection.prepareStatement("SELECT surname, name, age, sex, phone FROM users WHERE id = ?");
             preparedStatement.setInt(1, id);
             resultSet = preparedStatement.executeQuery();
-            //customer.setId(id);
+            customer.setId(id);
             while(resultSet.next()) {
-//                customer.setId(resultSet.getInt("id"));
                 customer.setSurname(resultSet.getString("surname"));
                 customer.setName(resultSet.getString("name"));
                 customer.setAge(resultSet.getInt("age"));
@@ -63,7 +61,6 @@ public class SelectQuery {
                 customer.setPhone(resultSet.getString("phone"));
             }
 
-            connection.commit();
             resultSet.close();
             preparedStatement.close();
             connection.close();

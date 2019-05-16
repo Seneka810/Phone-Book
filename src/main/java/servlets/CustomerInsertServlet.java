@@ -1,4 +1,4 @@
-package controllers;
+package servlets;
 
 import entities.Customer;
 import queries.InsertQuery;
@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-public class CustomerInsertController extends HttpServlet {
+public class CustomerInsertServlet extends HttpServlet {
 
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
        doPost(req, resp);

@@ -26,22 +26,21 @@
        <c:forEach items="${customers}" var="customer">
            <tr>
                <td>${customer.getId()}</td>
-               <td contenteditable="false">${customer.getSurname()}</td>
-               <td contenteditable="false">${customer.getName()}</td>
-               <td contenteditable="false">${customer.getAge()}</td>
-               <td contenteditable="false">${customer.getSex()}</td>
-               <td contenteditable="false">${customer.getPhone()}</td>
-
+               <td>${customer.getSurname()}</td>
+               <td>${customer.getName()}</td>
+               <td>${customer.getAge()}</td>
+               <td>${customer.getSex()}</td>
+               <td>${customer.getPhone()}</td>
                <td>
-                   <form action="updateCustomers.jsp" method="post">
-                       <input type="hidden" name="id" value="${customer.getId()}" />
-                       <input type="hidden" name="surname" value="${customer.getSurname()}">
-                       <input type="hidden" name="name" value="${customer.getName()}">
-                       <input type="hidden" name="age" value="${customer.getAge()}">
-                       <input type="hidden" name="sex" value="${customer.getSex()}">
-                       <input type="hidden" name="phone" value="${customer.getPhone()}">
+                   <jsp:forward page="updateCustomers.jsp">
+                       <input type="number" name="id" value="${customer.getId()}" />
+                       <input type="text" name="surname" value="${customer.getSurname()}">
+                       <input type="text" name="name" value="${customer.getName()}">
+                       <input type="number" name="age" value="${customer.getAge()}">
+                       <input type="text" name="sex" value="${customer.getSex()}">
+                       <input type="tel" name="phone" value="${customer.getPhone()}">
                        <input type="submit" value="Изменить">
-                   </form>
+                   </jsp:forward>
                </td>
 
            </tr>

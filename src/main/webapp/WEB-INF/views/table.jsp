@@ -32,7 +32,7 @@
                <td>${customer.getSex()}</td>
                <td>${customer.getPhone()}</td>
                <td>
-                   <jsp:forward page="updateCustomers.jsp">
+                   <form action="updateCustomers.jsp" method="post">
                        <input type="number" name="id" value="${customer.getId()}" />
                        <input type="text" name="surname" value="${customer.getSurname()}">
                        <input type="text" name="name" value="${customer.getName()}">
@@ -40,7 +40,7 @@
                        <input type="text" name="sex" value="${customer.getSex()}">
                        <input type="tel" name="phone" value="${customer.getPhone()}">
                        <input type="submit" value="Изменить">
-                   </jsp:forward>
+                   </form>
                </td>
 
            </tr>
